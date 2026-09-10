@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://iosbb0.web.app/sitemap.xml

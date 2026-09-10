@@ -1,0 +1,11 @@
+{
+  "_readme": "Version manifest for the Sakhtakar Android app. The app fetches this on launch. Raise minVersionCode only when an update is genuinely required — everyone below it is blocked until they download 47 MB.",
+  "latestVersionCode": 2,
+  "latestVersionName": "1.1",
+  "minVersionCode": 1,
+  "url": "https://github.com/NashatShamsadyn7/app-downloads/releases/download/v2026.08.04/Saxtakar-Imposter.apk",
+  "notes": {
+    "ku": "گلیچی دەستەی کەشتی زیادکرا، پشکنینی وەشان، و بەستەرە کۆمەڵایەتییەکان.",
+    "ar": "أُضيف خلل الطاقم، وفحص الإصدار، والروابط الاجتماعية."
+  }
+}

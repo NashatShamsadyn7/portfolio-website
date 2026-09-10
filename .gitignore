@@ -1,0 +1,6 @@
+node_modules/
+.firebase/
+downloads/*.apk
+downloads/*.exe
+*.log
+.DS_Store

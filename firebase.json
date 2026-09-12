@@ -4,6 +4,13 @@
     "cleanUrls": true,
     "ignore": [
       "firebase.json",
+      "docs/**",
+      "**/*.md",
+      "**/*.log",
+      "**/*.ps1",
+      "**/*.test.js",
+      "**/test/**",
+      "**/tests/**",
       "**/.*",
       "**/node_modules/**",
       "projects/**",
@@ -12,6 +19,15 @@
       "**/*.msi"
     ],
     "headers": [
+      {
+        "source": "/app-updates.json",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, max-age=0, must-revalidate"
+          }
+        ]
+      },
       {
         "source": "/imposter-version.json",
         "headers": [

@@ -2208,3 +2208,10 @@ html.theme-anim .footer {
 @media (max-width: 620px) {
   .work-src { margin-left: 0; margin-top: .25rem; }
 }
+
+/* طاولة مع محمد - 3D Table Game */
+.shot-table { background: linear-gradient(135deg, #1a1a1a, #0a0a0a); }
+.table-demo { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+.dice-icon { font-size: 3rem; animation: diceRoll 2s ease-in-out infinite; }
+.board-mini { width: 80%; height: 4px; background: linear-gradient(90deg, #00C851, #FF8C00); border-radius: 2px; }
+@keyframes diceRoll { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(90deg); } 50% { transform: rotate(180deg); } 75% { transform: rotate(270deg); } }

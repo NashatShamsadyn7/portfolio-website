@@ -795,23 +795,71 @@ const toast = (() => {
 })();
 
 /* ───────────────────────────────────────────
-   Live sync of file sizes + VPN version from
-   the GitHub Releases API. Same endpoint the
-   download-counter uses; one extra cached call,
-   every failure stays silent.
+   Live sync of hero card, work chips, download
+   section and JSON-LD from GitHub Releases.
+   Same endpoint the download-counter uses; one
+   cached call, every failure stays silent.
    ─────────────────────────────────────────── */
 (function initLiveSync() {
   const API = 'https://api.github.com/repos/NashatShamsadyn7/app-downloads/releases';
-  const KEY = 'dl-meta-v1';
+  const KEY = 'dl-meta-v2';
   const MS = 30 * 60 * 1000;
 
   const fmtMB = (b) => `${(b / (1024 * 1024)).toFixed(1)} MB`;
 
+  // Asset name → friendly display info for the hero card
+  const HERO_INFO = {
+    'Islamic-Nashat.apk': { name: 'Islamic Nashat', platform: 'Android', build: 'signed release build' },
+    'Nashat-TV.apk': { name: 'Nashat TV', platform: 'Android TV', build: 'signed release build' },
+    'Nashat-TV-Desktop-Setup.exe': { name: 'Nashat TV — Desktop', platform: 'Windows', build: 'NSIS installer' },
+    'IslamicNashatWidget.exe': { name: 'Prayer Widget', platform: 'Windows', build: 'portable EXE' },
+    'SpeechFlow-Setup.exe': { name: 'SpeechFlow', platform: 'Windows', build: 'setup installer' },
+    'Domina-Score-Counter.apk': { name: 'Domina', platform: 'Android', build: 'signed debug build' },
+    'Saxtakar-Imposter.apk': { name: 'Sakhtakar', platform: 'Android', build: 'signed release build' },
+  };
+
+  // Extract version from asset filename (e.g. "NashatVPN-Setup-1.6.0.exe" → "1.6.0")
+  function verFromName(name) {
+    const m = /(\d+\.\d+\.\d+|\d+\.\d+)(?=\.(apk|exe)$)/i.exec(name);
+    return m ? m[1] : null;
+  }
+
+  // Extract version from release name (e.g. "Nashat TV v1.6 (2026-09-10)" → "1.6")
+  function verFromReleaseName(name) {
+    if (!name) return null;
+    const m = /v(\d+\.\d+(?:\.\d+)?)/i.exec(name);
+    return m ? m[1] : null;
+  }
+
   function paint(meta) {
-    // Sizes — walk each download card via its hidden dl-count anchor
+    // ── 1. Hero card — newest release ──
+    if (meta.newest) {
+      const n = meta.newest;
+      const nameEl = $('#heroLatestName');
+      const metaEl = $('#heroLatestMeta');
+      if (nameEl) nameEl.textContent = n.appName;
+      if (metaEl) metaEl.textContent = `${n.platform} · ${n.size} · ${n.build}`;
+    }
+
+    // ── 2. Work section chips — version + size ──
+    $$('[data-ver-for]').forEach(el => {
+      const key = el.dataset.verFor;
+      const v = meta.versions[key];
+      if (v) el.textContent = `v${v}`;
+    });
+    $$('[data-size-for]').forEach(el => {
+      const key = el.dataset.sizeFor;
+      const bytes = meta.sizes[key];
+      if (typeof bytes === 'number' && bytes > 0) el.textContent = fmtMB(bytes);
+    });
+
+    // ── 3. Download section — size + version + link upgrade ──
     $$('.dl-item').forEach((card) => {
       const anchor = $('.dl-count', card);
-      const bytes = anchor && meta.sizes ? meta.sizes[anchor.dataset.asset] : undefined;
+      const asset = anchor && anchor.dataset.asset;
+
+      // Size
+      const bytes = asset && meta.sizes ? meta.sizes[asset] : undefined;
       if (typeof bytes === 'number' && bytes > 0) {
         const txt = fmtMB(bytes);
         const sizeEl = $('.dl-size b', card);
@@ -819,14 +867,16 @@ const toast = (() => {
         const btnSize = $('.btn-dl-size', card);
         if (btnSize && !btnSize.dataset.user) btnSize.textContent = txt;
       }
-    });
 
-    // Per-app link upgrade - each button follows the newest release that
-    // contains its exact asset name; the pinned tag in the HTML stays as
-    // fallback when the API is offline or rate-limited
-    $$('.dl-item').forEach((card) => {
-      const anchor = $('.dl-count', card);
-      const asset = anchor && anchor.dataset.asset;
+      // Version (for non-VPN assets that have version in filename)
+      if (asset) {
+        const verEl = $('.dl-version b', card);
+        const v = meta.versions[asset];
+        if (verEl && v) verEl.textContent = v;
+      }
+
+      // Link upgrade — each button follows the newest release that
+      // contains its exact asset name
       const tag = asset && meta.links ? meta.links[asset] : undefined;
       const btn = $('.btn-dl', card);
       if (asset && tag && btn) {
@@ -849,6 +899,12 @@ const toast = (() => {
         }
       }
     }
+
+    // ── 4. JSON-LD structured data ──
+    if (meta.jsonld) {
+      const script = $('#jsonld-data');
+      if (script) script.textContent = JSON.stringify(meta.jsonld, null, 2);
+    }
   }
 
   function readCache() {
@@ -866,11 +922,43 @@ const toast = (() => {
   fetch(API, { headers: { Accept: 'application/vnd.github+json' } })
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then((releases) => {
-      const meta = { sizes: {}, links: {}, vpnVersion: null, vpnTag: null };
+      const meta = { sizes: {}, links: {}, versions: {}, newest: null, jsonld: null };
+      let newestRelease = null;
+
+      releases.forEach(rel => (rel.assets || []).forEach(a => {
+        // Size: newest release wins (API returns newest first)
+        if (meta.sizes[a.name] === undefined) meta.sizes[a.name] = a.size;
+        // Link: newest release that has this asset
+        if (!meta.links[a.name]) meta.links[a.name] = rel.tag_name;
+        // Version from filename
+        const v = verFromName(a.name);
+        if (v && !meta.versions[a.name]) meta.versions[a.name] = v;
+
+        // Track newest release (by published_at) for hero card
+        const pub = new Date(rel.published_at || 0).getTime();
+        if (!newestRelease || pub > newestRelease.at) {
+          newestRelease = { at: pub, tag: rel.tag_name, relName: rel.name, asset: a };
+        }
+      }));
+
+      // Build newest release info for hero card
+      if (newestRelease) {
+        const a = newestRelease.asset;
+        const info = HERO_INFO[a.name] || {};
+        // Try to extract version from release name or filename
+        const ver = verFromReleaseName(newestRelease.relName) || verFromName(a.name);
+        const baseName = info.name || newestRelease.relName || a.name;
+        meta.newest = {
+          appName: ver ? `${baseName} v${ver}` : baseName,
+          platform: info.platform || (a.name.endsWith('.exe') ? 'Windows' : 'Android'),
+          size: fmtMB(a.size),
+          build: info.build || (a.name.endsWith('.exe') ? 'installer' : 'signed release build'),
+        };
+      }
+
+      // VPN version — newest Setup asset by published date
       let newestVpn = null;
       releases.forEach(rel => (rel.assets || []).forEach(a => {
-        if (meta.sizes[a.name] === undefined) meta.sizes[a.name] = a.size; // newest release wins
-        if (!meta.links[a.name]) meta.links[a.name] = rel.tag_name; // API returns newest release first
         const m = /^NashatVPN-Setup-(\d+)\.(\d+)\.(\d+)\.exe$/.exec(a.name);
         if (m) {
           const published = new Date(rel.published_at || 0).getTime();
@@ -881,14 +969,58 @@ const toast = (() => {
               (ver[0] > newestVpn.ver[0] ||
                (ver[0] === newestVpn.ver[0] && ver[1] > newestVpn.ver[1]) ||
                (ver[0] === newestVpn.ver[0] && ver[1] === newestVpn.ver[1] && ver[2] > newestVpn.ver[2])));
-          if (better) newestVpn = { at: published, ver, version: m[0].match(/[\d.]+(?=\.exe)/)[0], tag: rel.tag_name };
+          if (better) newestVpn = { at: published, ver, version: `${m[1]}.${m[2]}.${m[3]}`, tag: rel.tag_name };
         }
       }));
       if (newestVpn) { meta.vpnVersion = newestVpn.version; meta.vpnTag = newestVpn.tag; }
+
+      // Build JSON-LD
+      meta.jsonld = buildJsonLd(releases, meta);
+
       try { sessionStorage.setItem(KEY, JSON.stringify({ at: Date.now(), meta })); } catch {}
       paint(meta);
     })
     .catch(() => { /* offline / rate-limited — the static values stand */ });
+
+  function buildJsonLd(releases, meta) {
+    const script = $('#jsonld-data');
+    if (!script) return null;
+    let jsonld;
+    try {
+      jsonld = JSON.parse(script.textContent);
+    } catch { return null; }
+
+    // Map app name → primary asset name
+    const nameToAsset = {
+      'Islamic Nashat': 'Islamic-Nashat.apk',
+      'Nashat TV': 'Nashat-TV.apk',
+      'Nashat TV — Desktop': 'Nashat-TV-Desktop-Setup.exe',
+      'Islamic Nashat — Prayer Widget': 'IslamicNashatWidget.exe',
+      'SpeechFlow': 'SpeechFlow-Setup.exe',
+      'Domina — Score Counter': 'Domina-Score-Counter.apk',
+      'Nashat VPN': 'NashatVPN-Setup-1.6.0.exe',
+    };
+
+    jsonld['@graph'].forEach(node => {
+      if (node['@type'] !== 'SoftwareApplication') return;
+      const assetName = nameToAsset[node.name];
+      if (!assetName) return;
+
+      // Update version
+      const ver = meta.versions[assetName];
+      if (ver) node.softwareVersion = ver;
+
+      // Update file size
+      const bytes = meta.sizes[assetName];
+      if (typeof bytes === 'number' && bytes > 0) node.fileSize = fmtMB(bytes);
+
+      // Update download URL to newest release that has this asset
+      const tag = meta.links[assetName];
+      if (tag) node.downloadUrl = `https://github.com/NashatShamsadyn7/app-downloads/releases/download/${tag}/${assetName}`;
+    });
+
+    return jsonld;
+  }
 })();
 
 /* ───────────────────────────────────────────

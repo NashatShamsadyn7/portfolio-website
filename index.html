@@ -35,8 +35,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <script>/* Theme before first paint — no flash */(function(){try{var t=localStorage.getItem('nas-theme');if(t==='light'||(!t&&window.matchMedia('(prefers-color-scheme: light)').matches)){document.documentElement.setAttribute('data-theme','light')}}catch(e){}})();</script>
   <link rel="stylesheet" href="styles.css?v=31">
+  <link rel="stylesheet" href="release-updates.css?v=1">
 
-  <script type="application/ld+json">
+  <script type="application/ld+json" id="jsonld-data">
   {
     "@context": "https://schema.org",
     "@graph": [
@@ -224,9 +225,9 @@
       </p>
 
       <h1 class="display" data-anim="up" data-anim-delay="1">
-        I build apps that
-        <em>ship</em>, not
-        <span class="display-strike">demos</span>.
+        Everyday ideas.
+        <em>Useful apps.</em>
+        Always improving.
       </h1>
 
       <p class="hero-body" data-anim="up" data-anim-delay="2">
@@ -268,10 +269,11 @@
         <img src="assets/profile.jpg" alt="Portrait of Nashat Shamsadyn Ahmed" width="960" height="1200" loading="eager" fetchpriority="high">
         <span class="portrait-frame" aria-hidden="true"></span>
       </div>
-      <a class="latest" href="#download">
-        <span class="latest-tag">Latest release</span>
-        <strong class="latest-name">Islamic Nashat 1.0.2</strong>
-        <span class="latest-meta">Android · 34.5 MB · signed release build</span>
+      <a class="latest" id="latestAppUpdate" href="https://github.com/NashatShamsadyn7/app-downloads/releases/tag/v2026.09.10" target="_blank" rel="noopener noreferrer">
+        <span class="latest-tag">Latest app update</span>
+        <strong class="latest-name" id="latestAppUpdateName">Nashat TV · v1.6</strong>
+        <span class="latest-meta" id="latestAppUpdateDate">This app was updated on 10/09/2026</span>
+        <span class="release-link">Read release notes <span aria-hidden="true">↗</span></span>
       </a>
     </aside>
 
@@ -309,7 +311,7 @@
   <div class="shell">
     <header class="band-head" data-anim="up">
       <span class="kicker">01 — Selected work</span>
-      <h2 class="title">Nine apps, four <em>platforms</em>.</h2>
+      <h2 class="title">Ten apps, four <em>platforms</em>.</h2>
       <p class="lede">
         These are shipped builds, not mockups. Every size, version and package name below was read
         straight off the file you can download on this page.
@@ -331,7 +333,7 @@
         </div>
         <div class="work-text">
           <span class="work-index">01</span>
-          <p class="work-plat"><span class="chip chip-android">Android 8.0+</span> <span class="chip">v1.0.2</span> <span class="chip">34.5 MB</span></p>
+          <p class="work-plat"><span class="chip chip-android">Android 8.0+</span> <span class="chip" data-ver-for="Islamic-Nashat.apk">v1.0.2</span> <span class="chip" data-size-for="Islamic-Nashat.apk">34.5 MB</span></p>
           <h3 class="work-title">Islamic Nashat</h3>
           <p class="work-desc">
             A full Islamic companion in Arabic, Kurdish Sorani and English. The Quran reader
@@ -364,7 +366,7 @@
         </div>
         <div class="work-text">
           <span class="work-index">02</span>
-          <p class="work-plat"><span class="chip chip-android">Android TV 6.0+</span> <span class="chip">v1.6</span> <span class="chip">24.6 MB</span></p>
+          <p class="work-plat"><span class="chip chip-android">Android TV 6.0+</span> <span class="chip" data-ver-for="Nashat-TV.apk">v1.6</span> <span class="chip" data-size-for="Nashat-TV.apk">24.6 MB</span></p>
           <h3 class="work-title">Nashat TV</h3>
           <p class="work-desc">
             A living-room streaming app. Over 100 IPTV channels sorted into Kurdish, Arabic,
@@ -398,7 +400,7 @@
         </div>
         <div class="work-text">
           <span class="work-index">03</span>
-          <p class="work-plat"><span class="chip chip-win">Windows 10/11</span> <span class="chip">v1.5.3</span> <span class="chip">98.8 MB</span> <span class="chip chip-new">New</span></p>
+          <p class="work-plat"><span class="chip chip-win">Windows 10/11</span> <span class="chip" data-ver-for="Nashat-TV-Desktop-Setup.exe">v1.5.3</span> <span class="chip" data-size-for="Nashat-TV-Desktop-Setup.exe">98.8 MB</span> <span class="chip chip-new">New</span></p>
           <h3 class="work-title">Nashat TV — Desktop</h3>
           <p class="work-desc">
             The same catalogue rebuilt as a native desktop client. Live TV runs on HLS.js in the
@@ -436,7 +438,7 @@
         </div>
         <div class="work-text">
           <span class="work-index">04</span>
-          <p class="work-plat"><span class="chip chip-win">Windows 10/11</span> <span class="chip">v1.1.0</span> <span class="chip">63.5 MB</span> <span class="chip chip-new">New</span></p>
+          <p class="work-plat"><span class="chip chip-win">Windows 10/11</span> <span class="chip" data-ver-for="IslamicNashatWidget.exe">v1.1.0</span> <span class="chip" data-size-for="IslamicNashatWidget.exe">63.5 MB</span> <span class="chip chip-new">New</span></p>
           <h3 class="work-title">Islamic Nashat — Prayer Widget</h3>
           <p class="work-desc">
             A thin bar that floats over everything you do and counts down to the next prayer.
@@ -471,7 +473,7 @@
         </div>
         <div class="work-text">
           <span class="work-index">05</span>
-          <p class="work-plat"><span class="chip chip-win">Windows 10/11</span> <span class="chip">v1.0.2</span> <span class="chip">49.8 MB</span></p>
+          <p class="work-plat"><span class="chip chip-win">Windows 10/11</span> <span class="chip" data-ver-for="SpeechFlow-Setup.exe">v1.0.2</span> <span class="chip" data-size-for="SpeechFlow-Setup.exe">49.8 MB</span></p>
           <h3 class="work-title">SpeechFlow</h3>
           <p class="work-desc">
             Real-time dictation for Windows. It listens to your microphone and types into
@@ -503,7 +505,7 @@
         </div>
         <div class="work-text">
           <span class="work-index">06</span>
-          <p class="work-plat"><span class="chip chip-android">Android 7.0+</span> <span class="chip">v1.0</span> <span class="chip">21.6 MB</span></p>
+          <p class="work-plat"><span class="chip chip-android">Android 7.0+</span> <span class="chip" data-ver-for="Domina-Score-Counter.apk">v1.0</span> <span class="chip" data-size-for="Domina-Score-Counter.apk">21.6 MB</span></p>
           <h3 class="work-title">Domina — Score Counter</h3>
           <p class="work-desc">
             A card-game scoreboard for the table you are actually sitting at. Two teams, three
@@ -588,6 +590,42 @@
         </div>
       </article>
 
+      <!-- 10 طاولة مع محمد -->
+      <article class="work-row" data-anim="up">
+        <div class="work-visual">
+          <div class="shot shot-table">
+            <div class="shot-fallback shot-fallback--always" aria-hidden="true">
+              <span class="table-demo">
+                <span class="dice-icon">🎲</span>
+                <span class="board-mini"></span>
+              </span>
+              <span class="shot-word">طاولة مع محمد</span>
+              <span class="shot-note">3D Backgammon · Kurdish/Arabic</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-text">
+          <span class="work-index">10</span>
+          <p class="work-plat"><span class="chip chip-web">Web app</span> <span class="chip">3D</span> <span class="chip chip-new">New</span></p>
+          <h3 class="work-title">طاولة مع محمد</h3>
+          <p class="work-desc">
+            A 3D backgammon board with full game rules, AI opponent at three difficulty levels,
+            Kurdish/Arabic bilingual support, and built-in radio with Kurdish songs, Arabic songs,
+            and Quran recitations — all in a dark, wood-themed interface.
+          </p>
+          <ul class="work-points">
+            <li>3D CSS board with lighting, shadows, and smooth animations</li>
+            <li>Beginner, intermediate, and expert AI opponents</li>
+            <li>Full Kurdish Sorani and Arabic (RTL) bilingual interface</li>
+            <li>Built-in radio: Kurdish music, Arabic music, and Quran</li>
+          </ul>
+          <p class="work-stack">HTML · CSS 3D · JavaScript · Web Audio · Firebase Hosting</p>
+          <a class="work-link" href="https://iosbb7.web.app" target="_blank" rel="noopener">
+            Play it <svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M5 12h14m0 0-5.5-5.5M19 12l-5.5 5.5"/></svg>
+          </a>
+        </div>
+      </article>
+
       <!-- 09 Nashat VPN -->
       <article class="work-row" data-anim="up">
         <div class="work-visual">
@@ -598,7 +636,7 @@
         </div>
         <div class="work-text">
           <span class="work-index">09</span>
-          <p class="work-plat"><span class="chip chip-windows">Windows 10/11</span> <span class="chip">v1.6.0</span> <span class="chip">96 MB</span></p>
+          <p class="work-plat"><span class="chip chip-windows">Windows 10/11</span> <span class="chip" data-ver-for="NashatVPN">v1.6.0</span> <span class="chip" data-size-for="NashatVPN-Setup-1.6.0.exe">96 MB</span></p>
           <h3 class="work-title">Nashat VPN</h3>
           <p class="work-desc">
             A free VPN and proxy that actually ships. Pick one of the verified-working countries
@@ -661,8 +699,8 @@
           <p class="dl-note">Quran, Adhkar, Qibla, Tasbeeh and prayer times in three languages. A volume key now silences the Azan.</p>
           <ul class="dl-facts">
             <li><span>Platform</span><b>Android 8.0+</b></li>
-            <li class="dl-version"><span>Version</span><b>1.0.2</b></li>
-            <li class="dl-size"><span>Size</span><b>34.5 MB</b></li>
+            <li class="dl-version"><span>Version</span><b data-ver-for="Islamic-Nashat.apk">1.0.2</b></li>
+            <li class="dl-size"><span>Size</span><b data-size-for="Islamic-Nashat.apk">34.5 MB</b></li>
             <li><span>Build</span><b>Signed release</b></li>
             <li class="dl-count" data-asset="Islamic-Nashat.apk" hidden><span>Downloads</span><b>—</b></li>
           </ul>
@@ -695,8 +733,8 @@
           <p class="dl-note">Pass one phone around a room. 2,250 words and every picture ship inside the app.</p>
           <ul class="dl-facts">
             <li><span>Platform</span><b>Android 6.0+</b></li>
-            <li class="dl-version"><span>Version</span><b>1.1</b></li>
-            <li class="dl-size"><span>Size</span><b>47.3 MB</b></li>
+            <li class="dl-version"><span>Version</span><b data-ver-for="Saxtakar-Imposter.apk">1.1</b></li>
+            <li class="dl-size"><span>Size</span><b data-size-for="Saxtakar-Imposter.apk">47.3 MB</b></li>
             <li><span>Network</span><b>Version check only</b></li>
             <li class="dl-count" data-asset="Saxtakar-Imposter.apk" hidden><span>Downloads</span><b>—</b></li>
           </ul>
@@ -723,8 +761,8 @@
           <p class="dl-note">100+ live channels plus a Movies &amp; Series library, built for a remote.</p>
           <ul class="dl-facts">
             <li><span>Platform</span><b>Android TV 6.0+</b></li>
-            <li class="dl-version"><span>Version</span><b>1.6</b></li>
-            <li class="dl-size"><span>Size</span><b>15.6 MB</b></li>
+            <li class="dl-version"><span>Version</span><b data-ver-for="Nashat-TV.apk">1.6</b></li>
+            <li class="dl-size"><span>Size</span><b data-size-for="Nashat-TV.apk">15.6 MB</b></li>
             <li><span>Build</span><b>Signed release</b></li>
             <li class="dl-count" data-asset="Nashat-TV.apk" hidden><span>Downloads</span><b>—</b></li>
           </ul>
@@ -751,8 +789,8 @@
           <p class="dl-note">Two, three or four player scoring with undo, redo and RTL support.</p>
           <ul class="dl-facts">
             <li><span>Platform</span><b>Android 7.0+</b></li>
-            <li class="dl-version"><span>Version</span><b>1.0</b></li>
-            <li class="dl-size"><span>Size</span><b>21.6 MB</b></li>
+            <li class="dl-version"><span>Version</span><b data-ver-for="Domina-Score-Counter.apk">1.0</b></li>
+            <li class="dl-size"><span>Size</span><b data-size-for="Domina-Score-Counter.apk">21.6 MB</b></li>
             <li><span>Build</span><b>Signed debug</b></li>
             <li class="dl-count" data-asset="Domina-Score-Counter.apk" hidden><span>Downloads</span><b>—</b></li>
           </ul>
@@ -779,8 +817,8 @@
           <p class="dl-note">Live TV on HLS.js, movies and series on an embedded mpv player.</p>
           <ul class="dl-facts">
             <li><span>Platform</span><b>Windows 10/11 · x64</b></li>
-            <li class="dl-version"><span>Version</span><b>1.5.4</b></li>
-            <li class="dl-size"><span>Size</span><b>98.8 MB</b></li>
+            <li class="dl-version"><span>Version</span><b data-ver-for="Nashat-TV-Desktop-Setup.exe">1.5.4</b></li>
+            <li class="dl-size"><span>Size</span><b data-size-for="Nashat-TV-Desktop-Setup.exe">98.8 MB</b></li>
             <li><span>Type</span><b>NSIS installer</b></li>
             <li class="dl-count" data-asset="Nashat-TV-Desktop-Setup.exe" hidden><span>Downloads</span><b>—</b></li>
           </ul>
@@ -803,8 +841,8 @@
           <p class="dl-note">A floating countdown to the next prayer. No installer — just run it.</p>
           <ul class="dl-facts">
             <li><span>Platform</span><b>Windows 10/11 · x64</b></li>
-            <li class="dl-version"><span>Version</span><b>1.1.0</b></li>
-            <li class="dl-size"><span>Size</span><b>63.5 MB</b></li>
+            <li class="dl-version"><span>Version</span><b data-ver-for="IslamicNashatWidget.exe">1.1.0</b></li>
+            <li class="dl-size"><span>Size</span><b data-size-for="IslamicNashatWidget.exe">63.5 MB</b></li>
             <li><span>Type</span><b>Portable EXE</b></li>
             <li class="dl-count" data-asset="IslamicNashatWidget.exe" hidden><span>Downloads</span><b>—</b></li>
           </ul>
@@ -827,8 +865,8 @@
           <p class="dl-note">Real-time dictation that types into whatever window has focus.</p>
           <ul class="dl-facts">
             <li><span>Platform</span><b>Windows 10/11 · x64</b></li>
-            <li class="dl-version"><span>Version</span><b>1.0.2</b></li>
-            <li class="dl-size"><span>Size</span><b>49.8 MB</b></li>
+            <li class="dl-version"><span>Version</span><b data-ver-for="SpeechFlow-Setup.exe">1.0.2</b></li>
+            <li class="dl-size"><span>Size</span><b data-size-for="SpeechFlow-Setup.exe">49.8 MB</b></li>
             <li><span>Type</span><b>Setup installer</b></li>
             <li class="dl-count" data-asset="SpeechFlow-Setup.exe" hidden><span>Downloads</span><b>—</b></li>
           </ul>
@@ -851,8 +889,8 @@
           <p class="dl-note">Free VPN + proxy — verified-working countries only, one click, no account.</p>
           <ul class="dl-facts">
             <li><span>Platform</span><b>Windows 10/11 · x64</b></li>
-            <li class="dl-version"><span>Version</span><b>1.6.0</b></li>
-            <li class="dl-size"><span>Size</span><b>91.6 MB</b></li>
+            <li class="dl-version"><span>Version</span><b data-ver-for="NashatVPN">1.6.0</b></li>
+            <li class="dl-size"><span>Size</span><b data-size-for="NashatVPN-Setup-1.6.0.exe">91.6 MB</b></li>
             <li><span>Type</span><b>Setup installer · auto-updates</b></li>
             <li class="dl-count" data-asset="NashatVPN-Setup-1.6.0.exe" hidden><span>Downloads</span><b>—</b></li>
           </ul>
@@ -1283,6 +1321,7 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
-<script src="script.js?v=34"></script>
+<script src="script.js?v=35"></script>
+<script src="release-updates.js?v=1" defer></script>
 </body>
 </html>

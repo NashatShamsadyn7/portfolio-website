@@ -703,7 +703,7 @@ code { font-family: var(--mono); font-size: .84em; letter-spacing: -.01em; }
 .shot-widget   { background: radial-gradient(26rem 20rem at 50% 80%, rgba(165,127,49,.13), var(--ink-2) 70%); }
 .shot-speech   { background: radial-gradient(24rem 18rem at 50% 45%, rgba(215,169,75,.09), var(--ink-3) 68%); }
 .shot-domina   { background: radial-gradient(24rem 18rem at 40% 70%, rgba(242,237,228,.06), var(--ink-2) 66%); }
-.shot-longcat  { background: radial-gradient(26rem 20rem at 60% 30%, rgba(215,169,75,.08), var(--ink-2) 68%); }
+.shot-epulab   { background: radial-gradient(26rem 20rem at 50% 30%, rgba(90,140,230,.12), var(--ink-2) 70%); }
 .shot-imposter { background: radial-gradient(26rem 20rem at 50% 35%, rgba(215,169,75,.07), var(--ink-3) 70%); }
 
 /* Widget demo bar */
@@ -757,18 +757,6 @@ code { font-family: var(--mono); font-size: .84em; letter-spacing: -.01em; }
 }
 .score-demo b { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 400; line-height: 1; }
 .score-demo span { color: var(--paper-3); }
-
-/* Chat demo */
-.chat-demo { display: flex; flex-direction: column; gap: .5rem; width: min(100%, 20rem); }
-.bubble {
-  padding: .55rem .9rem;
-  font-size: .82rem;
-  line-height: 1.45;
-  border-radius: var(--r-md);
-  text-align: left;
-}
-.bubble-in  { align-self: flex-start; background: var(--ink-4); color: var(--paper-2); border-bottom-left-radius: 3px; }
-.bubble-out { align-self: flex-end; background: var(--brass); color: #17130C; border-bottom-right-radius: 3px; }
 
 /* VPN demo */
 .vpn-shot {
@@ -964,6 +952,7 @@ code { font-family: var(--mono); font-size: .84em; letter-spacing: -.01em; }
 .dl-mark-tv      { background: radial-gradient(6rem 6rem at 50% 25%, rgba(242,237,228,.07), var(--ink-1) 70%); }
 .dl-mark-desktop { background: radial-gradient(6rem 6rem at 50% 30%, rgba(215,169,75,.09), var(--ink-1) 72%); }
 .dl-mark-widget  { background: radial-gradient(6rem 6rem at 50% 75%, rgba(165,127,49,.14), var(--ink-1) 72%); }
+.dl-mark-epulab  { background: var(--ink-1); }
 .dl-mark-speech  { background: radial-gradient(6rem 6rem at 50% 50%, rgba(215,169,75,.10), var(--ink-1) 70%); }
 .dl-mark-domina {
   font-variant-numeric: tabular-nums;
@@ -1032,6 +1021,7 @@ code { font-family: var(--mono); font-size: .84em; letter-spacing: -.01em; }
   color: var(--paper-3);
 }
 .dl-hash code { color: var(--paper-2); }
+.dl-alt { margin-top: .6rem; font-size: .86rem; color: var(--paper-3); }
 
 .dl-get {
   display: flex;
@@ -1542,6 +1532,7 @@ code { font-family: var(--mono); font-size: .84em; letter-spacing: -.01em; }
   .nav-links, .nav-cta { display: none; }
   .nav-toggle { display: grid; }
   .nav { background: rgba(12,11,10,.82); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom-color: var(--line); }
+  [data-theme="light"] .nav { background: rgba(245, 241, 232, .88); }
 
   .hero { min-height: auto; padding-block: 7.5rem 4rem; }
   .hero-shell { grid-template-columns: 1fr; }
@@ -1573,6 +1564,22 @@ code { font-family: var(--mono); font-size: .84em; letter-spacing: -.01em; }
   .mailbox { flex-direction: column; align-items: flex-start; }
   .copy-btn { margin-left: 0; }
   .back-top { right: 1rem; bottom: 1rem; }
+
+  /* Phones: tighter cards, two facts per row, full-width actions */
+  .hero-actions { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+  .hero-actions .btn { justify-content: center; padding-inline: .75rem; }
+  .hero-stats { margin-top: 2.5rem; padding-top: 1.5rem; }
+  .dl-item { padding: 1.25rem; gap: 1rem; }
+  .dl-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
+  .dl-hash { overflow-wrap: anywhere; }
+  .dl-filter { flex: 1 1 auto; justify-content: center; min-height: 44px; }
+  .work-text { min-width: 0; }
+  .work-title { overflow-wrap: anywhere; }
+}
+
+@media (max-width: 380px) {
+  .hero-actions { grid-template-columns: 1fr; }
+  .dl-facts { grid-template-columns: 1fr 1fr; }
 }
 
 /* ═══════════ MOTION PREFERENCES ═══════════ */
@@ -2208,10 +2215,3 @@ html.theme-anim .footer {
 @media (max-width: 620px) {
   .work-src { margin-left: 0; margin-top: .25rem; }
 }
-
-/* طاولة مع محمد - 3D Table Game */
-.shot-table { background: linear-gradient(135deg, #1a1a1a, #0a0a0a); }
-.table-demo { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
-.dice-icon { font-size: 3rem; animation: diceRoll 2s ease-in-out infinite; }
-.board-mini { width: 80%; height: 4px; background: linear-gradient(90deg, #00C851, #FF8C00); border-radius: 2px; }
-@keyframes diceRoll { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(90deg); } 50% { transform: rotate(180deg); } 75% { transform: rotate(270deg); } }

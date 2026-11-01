@@ -1,12 +1,28 @@
 {
   "updates": [
     {
+      "projectId": "epulab",
+      "name": "EpuLab",
+      "version": "v0.0.3.3-beta",
+      "releasedAt": "2026-10-31T20:07:58Z",
+      "summary": "Gate challenges can now be solved automatically; teacher gates sit on a real bench",
+      "url": "https://github.com/NashatShamsadyn7/EpuLab-releases/releases/tag/v0.0.3.3-beta"
+    },
+    {
       "projectId": "nashat-tv-mobile",
       "name": "Nashat TV",
       "version": "v1.6",
       "releasedAt": "2026-09-10T13:33:58Z",
       "summary": "Nashat TV v1.6 release",
       "url": "https://github.com/NashatShamsadyn7/app-downloads/releases/tag/v2026.09.10"
+    },
+    {
+      "projectId": "domina-score-counter",
+      "name": "Domina",
+      "version": "v1.1",
+      "releasedAt": "2026-08-31T17:41:57Z",
+      "summary": "Domina v1.1 release",
+      "url": "https://github.com/NashatShamsadyn7/app-downloads/releases/tag/v2026.08.31"
     }
   ]
 }

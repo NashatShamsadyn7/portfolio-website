@@ -345,7 +345,10 @@ const toast = (() => {
     btn.addEventListener('click', () => {
       const want = btn.dataset.filter;
 
-      buttons.forEach(b => b.classList.toggle('is-on', b === btn));
+      buttons.forEach(b => {
+        b.classList.toggle('is-on', b === btn);
+        b.setAttribute('aria-pressed', String(b === btn));
+      });
 
       let shown = 0;
       items.forEach(item => {
@@ -411,8 +414,11 @@ const toast = (() => {
   function paint(counts) {
     let total = 0;
     cells.forEach(cell => {
-      const n = counts[cell.dataset.asset];
-      if (typeof n !== 'number') return;
+      // data-count-assets lists every file name an app has shipped under
+      const names = (cell.dataset.countAssets || cell.dataset.asset).split(',');
+      const found = names.filter(name => typeof counts[name] === 'number');
+      if (!found.length) return;
+      const n = found.reduce((sum, name) => sum + counts[name], 0);
       total += n;
       if (n < MIN_PER_APP) return;
       cell.querySelector('b').textContent = fmt(n);
@@ -886,6 +892,11 @@ const toast = (() => {
 
     // VPN version + download link follow the newest Setup asset
     if (meta.vpnVersion) {
+      const vpnBytes = meta.sizes[`NashatVPN-Setup-${meta.vpnVersion}.exe`];
+      $$('[data-vpn-ver]').forEach(el => { el.textContent = `v${meta.vpnVersion}`; });
+      if (typeof vpnBytes === 'number' && vpnBytes > 0) {
+        $$('[data-size-for^="NashatVPN-Setup-"]').forEach(el => { el.textContent = fmtMB(vpnBytes); });
+      }
       const vpnCard = $('.dl-count[data-asset^="NashatVPN"]');
       if (vpnCard) {
         const card = vpnCard.closest('.dl-item');
@@ -993,7 +1004,7 @@ const toast = (() => {
     // Map app name → primary asset name
     const nameToAsset = {
       'Islamic Nashat': 'Islamic-Nashat.apk',
-      'Nashat TV': 'Nashat-TV.apk',
+      'Nashat TV': 'app-release.apk',
       'Nashat TV — Desktop': 'Nashat-TV-Desktop-Setup.exe',
       'Islamic Nashat — Prayer Widget': 'IslamicNashatWidget.exe',
       'SpeechFlow': 'SpeechFlow-Setup.exe',

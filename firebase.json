@@ -100,23 +100,33 @@
     ],
     "redirects": [
       {
+        "source": "/longcat-chatbot",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/longcat-chatbot.html",
+        "destination": "/",
+        "type": 301
+      },
+      {
         "source": "/downloads/islamic-nashat.zip",
-        "destination": "https://github.com/NashatShamsadyn7/app-downloads/releases/latest/download/Islamic-Nashat.apk",
+        "destination": "https://github.com/NashatShamsadyn7/app-downloads/releases/download/v2026.08.04/Islamic-Nashat.apk",
         "type": 302
       },
       {
         "source": "/downloads/islamic-nashat.apk",
-        "destination": "https://github.com/NashatShamsadyn7/app-downloads/releases/latest/download/Islamic-Nashat.apk",
+        "destination": "https://github.com/NashatShamsadyn7/app-downloads/releases/download/v2026.08.04/Islamic-Nashat.apk",
         "type": 302
       },
       {
         "source": "/downloads/tv-app.zip",
-        "destination": "https://github.com/NashatShamsadyn7/app-downloads/releases/latest/download/Nashat-TV.apk",
+        "destination": "https://github.com/NashatShamsadyn7/app-downloads/releases/download/v2026.09.10/app-release.apk",
         "type": 302
       },
       {
         "source": "/downloads/nashat-tv.apk",
-        "destination": "https://github.com/NashatShamsadyn7/app-downloads/releases/latest/download/Nashat-TV.apk",
+        "destination": "https://github.com/NashatShamsadyn7/app-downloads/releases/download/v2026.09.10/app-release.apk",
         "type": 302
       },
       {
@@ -131,22 +141,22 @@
       },
       {
         "source": "/downloads/speechflow-windows.zip",
-        "destination": "https://github.com/NashatShamsadyn7/app-downloads/releases/latest/download/SpeechFlow-Setup.exe",
+        "destination": "https://github.com/NashatShamsadyn7/app-downloads/releases/download/v2026.08.04/SpeechFlow-Setup.exe",
         "type": 302
       },
       {
         "source": "/downloads/speechflow-setup.exe",
-        "destination": "https://github.com/NashatShamsadyn7/app-downloads/releases/latest/download/SpeechFlow-Setup.exe",
+        "destination": "https://github.com/NashatShamsadyn7/app-downloads/releases/download/v2026.08.04/SpeechFlow-Setup.exe",
         "type": 302
       },
       {
         "source": "/downloads/nashat-tv-desktop-setup.exe",
-        "destination": "https://github.com/NashatShamsadyn7/app-downloads/releases/latest/download/Nashat-TV-Desktop-Setup.exe",
+        "destination": "https://github.com/NashatShamsadyn7/app-downloads/releases/download/v2026.08.04/Nashat-TV-Desktop-Setup.exe",
         "type": 302
       },
       {
         "source": "/downloads/islamic-nashat-widget.exe",
-        "destination": "https://github.com/NashatShamsadyn7/app-downloads/releases/latest/download/IslamicNashatWidget.exe",
+        "destination": "https://github.com/NashatShamsadyn7/app-downloads/releases/download/v2026.08.04/IslamicNashatWidget.exe",
         "type": 302
       }
     ]

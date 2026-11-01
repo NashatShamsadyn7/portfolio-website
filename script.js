@@ -817,7 +817,7 @@ const toast = (() => {
   const HERO_INFO = {
     'Islamic-Nashat.apk': { name: 'Islamic Nashat', platform: 'Android', build: 'signed release build' },
     'Nashat-TV.apk': { name: 'Nashat TV', platform: 'Android TV', build: 'signed release build' },
-    'Nashat-TV-Desktop-Setup.exe': { name: 'Nashat TV — Desktop', platform: 'Windows', build: 'NSIS installer' },
+    'Nashat-TV-Setup-1.5.6.exe': { name: 'Nashat TV — Desktop', platform: 'Windows', build: 'NSIS installer' },
     'IslamicNashatWidget.exe': { name: 'Prayer Widget', platform: 'Windows', build: 'portable EXE' },
     'SpeechFlow-Setup.exe': { name: 'SpeechFlow', platform: 'Windows', build: 'setup installer' },
     'Domina-Score-Counter.apk': { name: 'Domina', platform: 'Android', build: 'signed debug build' },
@@ -1005,7 +1005,7 @@ const toast = (() => {
     const nameToAsset = {
       'Islamic Nashat': 'Islamic-Nashat.apk',
       'Nashat TV': 'app-release.apk',
-      'Nashat TV — Desktop': 'Nashat-TV-Desktop-Setup.exe',
+      'Nashat TV — Desktop': 'Nashat-TV-Setup-1.5.6.exe',
       'Islamic Nashat — Prayer Widget': 'IslamicNashatWidget.exe',
       'SpeechFlow': 'SpeechFlow-Setup.exe',
       'Domina — Score Counter': 'Domina-Score-Counter.apk',

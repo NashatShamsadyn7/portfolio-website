@@ -1,6 +1,14 @@
 {
   "updates": [
     {
+      "projectId": "nashat-tv-pc",
+      "name": "Nashat TV — Desktop",
+      "version": "v1.5.6",
+      "releasedAt": "2026-11-01T10:40:23Z",
+      "summary": "Opening the app twice now focuses the running window; dead channels are hidden",
+      "url": "https://github.com/NashatShamsadyn7/nashat-tv-pc/releases/tag/v1.5.6"
+    },
+    {
       "projectId": "epulab",
       "name": "EpuLab",
       "version": "v0.0.3.3-beta",

@@ -4,7 +4,7 @@
       "projectId": "islamic-nashat-pc",
       "name": "Islamic Nashat — Prayer Widget",
       "version": "v2.0.0",
-      "releasedAt": "2026-11-06T23:20:00Z",
+      "releasedAt": "2026-11-06T23:14:14Z",
       "summary": "Rebuilt: same times as the phone, stop the adhan in one click, Ramadan, Friday and Hijri date, Arabic, Kurdish and English",
       "url": "https://github.com/NashatShamsadyn7/islamic-nashat-pc/releases/tag/v2.0.0"
     },
@@ -31,6 +31,14 @@
       "releasedAt": "2026-11-06T19:27:46Z",
       "summary": "Rebuilt from scratch: Whisper recognition, live words while you talk, tap or hold to dictate, Arabic-to-English translate",
       "url": "https://github.com/NashatShamsadyn7/speechflow/releases/tag/v3.0.0"
+    },
+    {
+      "projectId": "islamic-nashat-mobile",
+      "name": "Islamic Nashat",
+      "version": "v1.1.6",
+      "releasedAt": "2026-11-06T17:58:20Z",
+      "summary": "New minimal design, a clearer adhan setup check, and the AI helper working again",
+      "url": "https://github.com/NashatShamsadyn7/islamic-nashat-downloads/releases/tag/v1.1.6"
     },
     {
       "projectId": "nashat-tv-mobile",
@@ -71,6 +79,22 @@
       "releasedAt": "2026-08-31T17:41:57Z",
       "summary": "Domina v1.1 release",
       "url": "https://github.com/NashatShamsadyn7/app-downloads/releases/tag/v2026.08.31"
+    },
+    {
+      "projectId": "nashat-vpn",
+      "name": "Nashat VPN",
+      "version": "v1.6.0",
+      "releasedAt": "2026-08-23T12:00:00Z",
+      "summary": "Favourites, auto-connect at startup, tray, kill switch and live speed",
+      "url": "https://github.com/NashatShamsadyn7/nashat-vpn/releases/tag/v1.6.0"
+    },
+    {
+      "projectId": "imposter-game",
+      "name": "Sakhtakar",
+      "version": "v1.1",
+      "releasedAt": "2026-08-04T12:00:00Z",
+      "summary": "Offline Android app with a version check",
+      "url": "https://github.com/NashatShamsadyn7/app-downloads/releases/tag/v2026.08.04"
     }
   ]
 }

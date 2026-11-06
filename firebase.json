@@ -111,12 +111,12 @@
       },
       {
         "source": "/downloads/islamic-nashat.zip",
-        "destination": "https://github.com/NashatShamsadyn7/app-downloads/releases/download/v2026.08.04/Islamic-Nashat.apk",
+        "destination": "https://github.com/NashatShamsadyn7/app-downloads/releases/download/v2026.11.02/Islamic-Nashat.apk",
         "type": 302
       },
       {
         "source": "/downloads/islamic-nashat.apk",
-        "destination": "https://github.com/NashatShamsadyn7/app-downloads/releases/download/v2026.08.04/Islamic-Nashat.apk",
+        "destination": "https://github.com/NashatShamsadyn7/app-downloads/releases/download/v2026.11.02/Islamic-Nashat.apk",
         "type": 302
       },
       {

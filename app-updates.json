@@ -3,6 +3,14 @@
     {
       "projectId": "speechflow",
       "name": "SpeechFlow",
+      "version": "v3.1.1",
+      "releasedAt": "2026-11-06T20:50:00Z",
+      "summary": "Live words on the bar and the on-device engine work again; smaller download",
+      "url": "https://github.com/NashatShamsadyn7/speechflow/releases/tag/v3.1.1"
+    },
+    {
+      "projectId": "speechflow",
+      "name": "SpeechFlow",
       "version": "v3.1.0",
       "releasedAt": "2026-11-06T20:43:54Z",
       "summary": "Easier setup (the key is picked up when you copy it), updates itself, new dark settings",

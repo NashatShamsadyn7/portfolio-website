@@ -1,6 +1,14 @@
 {
   "updates": [
     {
+      "projectId": "speechflow",
+      "name": "SpeechFlow",
+      "version": "v3.0.0",
+      "releasedAt": "2026-11-06T19:27:46Z",
+      "summary": "Rebuilt from scratch: Whisper recognition, live words while you talk, tap or hold to dictate, Arabic-to-English translate",
+      "url": "https://github.com/NashatShamsadyn7/speechflow/releases/tag/v3.0.0"
+    },
+    {
       "projectId": "nashat-tv-mobile",
       "name": "Nashat TV",
       "version": "v1.7.1",

@@ -1,6 +1,14 @@
 {
   "updates": [
     {
+      "projectId": "islamic-nashat-pc",
+      "name": "Islamic Nashat — Prayer Widget",
+      "version": "v2.0.0",
+      "releasedAt": "2026-11-06T23:20:00Z",
+      "summary": "Rebuilt: same times as the phone, stop the adhan in one click, Ramadan, Friday and Hijri date, Arabic, Kurdish and English",
+      "url": "https://github.com/NashatShamsadyn7/islamic-nashat-pc/releases/tag/v2.0.0"
+    },
+    {
       "projectId": "speechflow",
       "name": "SpeechFlow",
       "version": "v3.1.1",

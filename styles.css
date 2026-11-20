@@ -2219,3 +2219,5 @@ html.theme-anim .footer {
 /* App logo beside a project title */
 .work-title-logo { display: flex; align-items: center; gap: .9rem; }
 .work-logo { width: 1.15em; height: 1.15em; flex: none; border-radius: 22%; box-shadow: 0 6px 18px rgba(0,0,0,.35); }
+.shot.shot-epulab { aspect-ratio: 1536 / 837; }
+.shot-epulab img { object-position: left top; }

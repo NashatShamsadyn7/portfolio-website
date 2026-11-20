@@ -1110,7 +1110,6 @@ const toast = (() => {
    localhost or plain http, where it errors).
    ─────────────────────────────────────────── */
 if ('serviceWorker' in navigator && location.protocol === 'https:') {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {});
-  });
+  // No offline cache any more: drop any worker an earlier version installed.
+  navigator.serviceWorker.getRegistrations().then((list) => list.forEach((r) => r.unregister())).catch(() => {});
 }
